@@ -1,10 +1,13 @@
+install lighttpd for windows
+  from http://lighttpd.dtech.hu/
+
 create a file named wsf-cgi.cmd
   set its contents to
     @echo OFF
     C:\Windows\System32\cscript.exe /nologo %*
   move it to the e:/shared-documents/lighttpd/ folder
 
-in the conf folder
+in the lighttpd conf folder
   in lighttpd.conf file
     in the server.modules section
       uncomment "mod_cgi"
