@@ -1,0 +1,23 @@
+create a file named wsf-cgi.cmd
+  set its contents to
+    @echo OFF
+    C:\Windows\System32\cscript.exe /nologo %*
+  move it to the e:/shared-documents/lighttpd/ folder
+
+in the conf folder
+  in lighttpd.conf file
+    in the server.modules section
+      uncomment "mod_cgi"
+      make sure the last entry in the section doesnt end with a comma
+    comment the lines
+      include "variables.conf"
+      include "mimetype.conf"
+    add somewhere a line to declare the server_root variable
+      var.server_root = "e:/shared-documents/lighttpd/"
+      var.temp_dir = "e:/shared-documents/lighttpd/temp"
+    replace the index-file.names section with
+      index-file.names              = ( "index.wsf" )
+    replace the static-file.exclude-extensions section with
+      static-file.exclude-extensions = ( ".wsf" )
+    replace the cgi.assign section with
+      cgi.assign = ( ".wsf" => "e:/shared-documents/lighttpd/wsf-cgi.cmd"
